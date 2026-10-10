@@ -1,0 +1,15 @@
+[Unit]
+Description=Apply Comfort Zone time-of-use temperature schedule
+
+[Timer]
+# IMPORTANT: Keep trigger times aligned with COMFORTZONE_SCHEDULE in .env.
+OnCalendar=*-*-* 02:00:00
+OnCalendar=*-*-* 06:00:00
+OnCalendar=*-*-* 12:00:00
+OnCalendar=*-*-* 16:00:00
+Persistent=true
+AccuracySec=1s
+Unit=comfortzone.service
+
+[Install]
+WantedBy=timers.target

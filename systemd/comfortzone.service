@@ -1,0 +1,16 @@
+[Unit]
+Description=Unofficial Comfort Zone / Loggamera temperature setpoint
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+User=REPLACE_WITH_LINUX_USERNAME
+WorkingDirectory=/home/REPLACE_WITH_LINUX_USERNAME/comfortzone-loggamera-scheduler
+EnvironmentFile=/home/REPLACE_WITH_LINUX_USERNAME/comfortzone-loggamera-scheduler/.env
+ExecStart=/home/REPLACE_WITH_LINUX_USERNAME/comfortzone-loggamera-scheduler/.venv/bin/python /home/REPLACE_WITH_LINUX_USERNAME/comfortzone-loggamera-scheduler/comfortzone_scheduler.py --once
+TimeoutStartSec=180
+NoNewPrivileges=true
+PrivateTmp=true
+
+# Do not add Install: section: the service is started by the timer.
